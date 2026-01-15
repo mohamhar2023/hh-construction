@@ -1,0 +1,223 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>HH Construction</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <style>
+      @import url('https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,600;1,400&family=Inter:wght@300;400;500;600&family=Great+Vibes&display=swap');
+      
+      :root {
+        --color-primary: #1c1c1c;
+        --color-accent: #EF4444;
+        --color-gold: #D4AF37;
+        --color-light: #f5f5f5;
+        --glass-bg: rgba(28, 28, 28, 0.7);
+        --glass-border: rgba(255, 255, 255, 0.1);
+      }
+      
+      body {
+        background-color: #f5f5f5;
+        color: #1c1c1c;
+      }
+      
+      .font-display {
+        font-family: 'Playfair Display', serif;
+      }
+      
+      .font-body {
+        font-family: 'Inter', sans-serif;
+      }
+
+      .font-cursive {
+        font-family: 'Great Vibes', cursive;
+      }
+
+      @keyframes gradientShift {
+        0%, 100% { background-position: 0% 50%; }
+        50% { background-position: 100% 50%; }
+      }
+      
+      .animate-gradient {
+        background-size: 200% 200%;
+        animation: gradientShift 8s ease infinite;
+      }
+      
+      @keyframes shimmer {
+        0% { background-position: -200% center; }
+        100% { background-position: 200% center; }
+      }
+      
+      .text-shimmer {
+        background: linear-gradient(90deg, #f5f5f5 0%, #D4AF37 25%, #f5f5f5 50%, #D4AF37 75%, #f5f5f5 100%);
+        background-size: 200% auto;
+        -webkit-background-clip: text;
+        background-clip: text;
+        -webkit-text-fill-color: transparent;
+        animation: shimmer 4s linear infinite;
+      }
+      
+      @keyframes glowPulse {
+        0%, 100% { box-shadow: 0 0 20px rgba(239, 68, 68, 0.4), 0 0 40px rgba(239, 68, 68, 0.2); }
+        50% { box-shadow: 0 0 30px rgba(239, 68, 68, 0.6), 0 0 60px rgba(239, 68, 68, 0.3); }
+      }
+      
+      .animate-glow {
+        animation: glowPulse 2s ease-in-out infinite;
+      }
+      
+      @keyframes float {
+        0%, 100% { transform: translateY(0px); }
+        50% { transform: translateY(-10px); }
+      }
+      
+      .animate-float {
+        animation: float 4s ease-in-out infinite;
+      }
+      
+      @keyframes slideUp {
+        from { opacity: 0; transform: translateY(40px); }
+        to { opacity: 1; transform: translateY(0); }
+      }
+      
+      .animate-slide-up {
+        animation: slideUp 0.8s ease-out forwards;
+      }
+      
+      @keyframes scaleIn {
+        from { opacity: 0; transform: scale(0.9); }
+        to { opacity: 1; transform: scale(1); }
+      }
+      
+      .animate-scale-in {
+        animation: scaleIn 0.6s ease-out forwards;
+      }
+      
+      @keyframes fadeIn {
+        from { opacity: 0; }
+        to { opacity: 1; }
+      }
+      
+      .animate-fade-in {
+        animation: fadeIn 1s ease-out forwards;
+      }
+      
+      @keyframes lineGrow {
+        from { width: 0; }
+        to { width: 60px; }
+      }
+      
+      .animate-line-grow {
+        animation: lineGrow 0.8s ease-out forwards;
+      }
+      
+      @keyframes sparkle {
+        0%, 100% { opacity: 0.3; transform: scale(1); }
+        50% { opacity: 1; transform: scale(1.2); }
+      }
+      
+      .glass {
+        background: rgba(28, 28, 28, 0.7);
+        backdrop-filter: blur(20px);
+        -webkit-backdrop-filter: blur(20px);
+        border: 1px solid rgba(255, 255, 255, 0.1);
+      }
+      
+      .glass-light {
+        background: rgba(255, 255, 255, 0.1);
+        backdrop-filter: blur(20px);
+        -webkit-backdrop-filter: blur(20px);
+        border: 1px solid rgba(255, 255, 255, 0.2);
+      }
+      
+      .card-3d {
+        transform-style: preserve-3d;
+        perspective: 1000px;
+      }
+      
+      .card-3d-inner {
+        transition: transform 0.4s ease;
+      }
+      
+      .card-3d:hover .card-3d-inner {
+        transform: rotateY(5deg) rotateX(5deg);
+      }
+      
+      .magnetic {
+        transition: transform 0.3s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+      }
+      
+      .gradient-hero {
+        background: linear-gradient(135deg, rgba(239, 68, 68, 0.8) 0%, rgba(28, 28, 28, 0.9) 50%, rgba(212, 175, 55, 0.3) 100%);
+      }
+      
+      .gradient-cta {
+        background: linear-gradient(135deg, #EF4444 0%, #DC2626 50%, #D4AF37 100%);
+      }
+      
+      .gradient-dark {
+        background: linear-gradient(180deg, #1c1c1c 0%, #2a2a2a 50%, #1c1c1c 100%);
+      }
+      
+      .text-gradient {
+        background: linear-gradient(135deg, #EF4444 0%, #D4AF37 100%);
+        -webkit-background-clip: text;
+        background-clip: text;
+        -webkit-text-fill-color: transparent;
+      }
+      
+      .text-glow {
+        text-shadow: 0 0 20px rgba(239, 68, 68, 0.5), 0 0 40px rgba(239, 68, 68, 0.3);
+      }
+      
+      .hover-lift {
+        transition: transform 0.3s ease, box-shadow 0.3s ease;
+      }
+      
+      .hover-lift:hover {
+        transform: translateY(-8px);
+        box-shadow: 0 20px 40px rgba(0, 0, 0, 0.3);
+      }
+      
+      .hover-glow:hover {
+        box-shadow: 0 0 30px rgba(239, 68, 68, 0.4);
+      }
+      
+      .no-scrollbar::-webkit-scrollbar {
+          display: none;
+      }
+
+      .no-scrollbar {
+          -ms-overflow-style: none;
+          scrollbar-width: none;
+      }
+      
+      .parallax-slow {
+        will-change: transform;
+      }
+      
+      .decorative-line {
+        background: linear-gradient(90deg, #EF4444 0%, #D4AF37 100%);
+      }
+      
+      .decorative-dot {
+        background: radial-gradient(circle, #EF4444 0%, transparent 70%);
+      }
+    </style>
+  <script type="importmap">
+{
+  "imports": {
+    "react-dom/": "https://esm.sh/react-dom@^19.2.3/",
+    "react/": "https://esm.sh/react@^19.2.3/",
+    "react": "https://esm.sh/react@^19.2.3",
+    "@google/genai": "https://esm.sh/@google/genai@^1.35.0"
+  }
+}
+</script>
+</head>
+  <body>
+    <div id="root"></div>
+    <script type="module" src="/index.tsx"></script>
+  </body>
+</html>
